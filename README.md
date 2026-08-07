@@ -32,11 +32,13 @@ The goal is to gain hands-on experience with enterprise cybersecurity concepts i
 
 ## Project Progress
 
-- ✅ Linux Mint Installed
-- ✅ Static IP Configured
-- ✅ Git Repository Created
-- ⬜ Wazuh Installed
-- ⬜ Windows Agent Connected
-- ⬜ Suricata Installed
-- ⬜ Zeek Installed
-- ⬜ Attack Simulations
+- [x] Installed Linux Mint 22.3
+- [x] Configured Git repository
+- [x] Updated HP BIOS
+- [x] Diagnosed RAM detection issue
+- [x] Restored full 8 GB RAM by reseating memory
+- [ ] Install Wazuh
+- [ ] Install Suricata
+- [ ] Configure agents
+- [ ] Create attack simulations
+- [ ] Build dashboards
