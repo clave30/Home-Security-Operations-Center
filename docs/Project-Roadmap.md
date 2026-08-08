@@ -6,7 +6,7 @@
 
 Accomplishments:
 
-[ ]Created GitHub repository
+[ ] Created GitHub repository
 
 [ ] Initialized Git
 
