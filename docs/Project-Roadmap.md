@@ -4,15 +4,24 @@
 
 ### Status: Complete
 
-Accomplishments
+Accomplishments:
+
 [ ]Created GitHub repository
+
 [ ] Initialized Git
+
 [ ] Created initial documentation files
+
 [ ] Planned Home SOC objectives
+
 [ ] Installed Linux Mint 22.3
+
 [ ] Configured networking
+
 [ ] Reserved a static IP
+
 [ ] Updated the BIOS
+
 [ ] Diagnosed and fixed the RAM issue by reseating the memory
 
 
