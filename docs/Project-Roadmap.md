@@ -30,17 +30,27 @@ Accomplishments:
 Goal:
 Prepare the server so it's ready for cybersecurity tools.
 
-Checklist
-✅ Linux Mint installed
-✅ Network configured
-✅ Static IP configured
-✅ Git configured
-✅ GitHub repository created
-✅ BIOS updated
-✅ RAM issue fixed
-⬜ Organize documentation
-⬜ Install VS Code (optional)
-⬜ Clone repository onto Home SOC
+Checklist:
+- Linux Mint installed
+  
+- Network configured
+  
+- Static IP configured
+  
+- Git configured
+  
+- GitHub repository created
+  
+- BIOS updated
+  
+- RAM issue fixed
+  
+- Organize documentation
+  
+- Install VS Code (optional)
+  
+- Clone repository onto Home SOC
+  
 
 Once these are complete...
 
