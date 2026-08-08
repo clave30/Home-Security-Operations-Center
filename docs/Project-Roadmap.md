@@ -50,24 +50,17 @@ Checklist:
 - Install VS Code (optional)
   
 - Clone repository onto Home SOC
+
   
-
-Once these are complete...
-
-➡️ We'll start Phase 3.
-
-Future Roadmap
 Phase 3 — SIEM Deployment
 
 Goal:
 
 Install the core SOC platform.
 
-We'll install:
-
-Wazuh Indexer
-Wazuh Manager
-Wazuh Dashboard
+- Wazuh Indexer
+- Wazuh Manager
+- Wazuh Dashboard
 
 Documentation:
 
@@ -75,64 +68,70 @@ Installation
 Screenshots
 Architecture updates
 Verification tests
-Phase 4 — Endpoint Monitoring
 
-We'll connect your Windows PC.
 
-Install:
+# Phase 4 — Endpoint Monitoring
 
-Wazuh Agent
-Sysmon
-
-Learn:
-
-Endpoint logging
-Event IDs
-Process monitoring
-File monitoring
-Phase 5 — Network Security
+Connect to windows PC
 
 Install:
 
-Suricata IDS
-Emerging Threat rules
+- Wazuh Agent
+- Sysmon
 
 Learn:
 
-IDS signatures
-Packet inspection
-Alert generation
-Phase 6 — Attack Simulation
+- Endpoint logging
+- Event IDs
+- Process monitoring
+- File monitoring
 
-We'll generate realistic attacks.
+
+#Phase 5 — Network Security
+
+Install:
+
+- Suricata IDS
+- Emerging Threat rules
+
+Learn:
+
+- IDS signatures
+- Packet inspection
+- Alert generation
+
+#Phase 6 — Attack Simulation
+
+Generation of realistic attacks
 
 Examples:
 
-Port scanning
-Failed logins
-Brute force
-Reverse shells
-Malware simulation
-PowerShell attacks
-Phase 7 — Detection Engineering
+- Port scanning
+- Failed logins
+- Brute force
+- Reverse shells
+- Malware simulation
+- PowerShell attacks
 
-This is where you'll start looking like a SOC analyst.
 
-You'll create:
+# Phase 7 — Detection Engineering
 
-Custom Wazuh rules
-Custom Suricata signatures
-Active responses
-Dashboards
-Phase 8 — Documentation & Portfolio
+Create:
 
-We'll polish everything.
+- Custom Wazuh rules
+- Custom Suricata signatures
+- Active responses
+- Dashboards
+  
+# Phase 8 — Documentation & Portfolio
+
+Polishing everything
 
 Including:
 
-Architecture diagrams
-Screenshots
-Detection writeups
-Lessons learned
-Final README
-LinkedIn showcase
+- Architecture diagrams
+- Screenshots
+- Detection writeups
+- Lessons learned
+- Final README
+- LinkedIn showcase
