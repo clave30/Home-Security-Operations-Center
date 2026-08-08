@@ -6,23 +6,23 @@
 
 Accomplishments:
 
-[ ] Created GitHub repository
+- Created GitHub repository
 
-[ ] Initialized Git
+- Initialized Git
 
-[ ] Created initial documentation files
+- Created initial documentation files
 
-[ ] Planned Home SOC objectives
+- Planned Home SOC objectives
 
-[ ] Installed Linux Mint 22.3
+- Installed Linux Mint 22.3
 
-[ ] Configured networking
+- Configured networking
 
-[ ] Reserved a static IP
+- Reserved a static IP
 
-[ ] Updated the BIOS
+- Updated the BIOS
 
-[ ] Diagnosed and fixed the RAM issue by reseating the memory
+- Diagnosed and fixed the RAM issue by reseating the memory
 
 
 # Phase 2 — Infrastructure Setup (Current Phase)
