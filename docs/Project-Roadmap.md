@@ -52,11 +52,11 @@ Checklist:
 - Clone repository onto Home SOC
 
   
-Phase 3 — SIEM Deployment
+# Phase 3 — SIEM Deployment
 
 Goal:
 
-Install the core SOC platform.
+### Installing the core SOC platform.
 
 - Wazuh Indexer
 - Wazuh Manager
@@ -72,7 +72,7 @@ Verification tests
 
 # Phase 4 — Endpoint Monitoring
 
-Connect to windows PC
+### Connect to windows PC
 
 Install:
 
@@ -87,9 +87,9 @@ Learn:
 - File monitoring
 
 
-#Phase 5 — Network Security
+# Phase 5 — Network Security
 
-Install:
+### Install:
 
 - Suricata IDS
 - Emerging Threat rules
@@ -100,9 +100,9 @@ Learn:
 - Packet inspection
 - Alert generation
 
-#Phase 6 — Attack Simulation
+# Phase 6 — Attack Simulation
 
-Generation of realistic attacks
+### Generation of realistic attacks
 
 Examples:
 
@@ -125,7 +125,7 @@ Create:
   
 # Phase 8 — Documentation & Portfolio
 
-Polishing everything
+### Polishing everything
 
 Including:
 
