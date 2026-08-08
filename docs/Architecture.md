@@ -25,5 +25,7 @@ Build a home Security Operations Center capable of monitoring endpoints, collect
 ## Network
 
 Home Router
+
 ├── Main Windows PC (Agent)
+
 └── Linux Mint Home SOC Server
