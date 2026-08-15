@@ -1,167 +1,241 @@
-# Home SOC Installation Guide
-
-This document provides the installation and deployment process for building the Home Security Operations Center (Home SOC). It is intended to serve as a reproducible guide for rebuilding the environment from scratch.
-
----
-
-# Project Overview
-
-The objective of this project is to build a Home Security Operations Center capable of:
-
-- Collecting endpoint logs
-- Monitoring system activity
-- Detecting malicious behavior
-- Performing network intrusion detection
-- Simulating cyber attacks
-- Documenting the entire deployment process
-
----
-
-# Hardware
-
-## Home SOC Server
-
-| Component | Specification |
-|-----------|---------------|
-| Model | HP EliteDesk 705 G2 Desktop Mini |
-| CPU | AMD PRO A8-8600B |
-| RAM | 8 GB DDR3 |
-| Storage | SSD |
-| Network | Ethernet |
-| Operating System | Linux Mint 22.3 Cinnamon |
-
----
-
 # Phase 1 – Base Operating System
 
 ## Install Linux Mint
 
 Linux Mint 22.3 Cinnamon was selected as the operating system because it provides:
 
-- Long Term Support (LTS)
-- Ubuntu package compatibility
+- Ubuntu/Debian package compatibility
+- Long-term support
 - Low hardware requirements
 - Stable desktop environment
-- Excellent documentation
+- Extensive community documentation
 
-After installation, the system was updated to the latest packages.
-
-```bash
+After installation, the system was updated:
 sudo apt update
 sudo apt upgrade -y
-```
 
----
 
-# Phase 2 – Network Configuration
+### Phase 2 — Hardware Validation & Firmware
+
+# Phase 2 – Hardware Validation and Firmware Update
+
+During initial deployment, the server reported only approximately 3.2 GB of available RAM despite having 8 GB physically installed.
+
+The system was investigated through:
+
+- BIOS hardware information
+- Linux hardware and memory information
+- Windows Task Manager
+- Individual RAM module testing
+- RAM reseating
+- BIOS firmware update
+
+The HP EliteDesk 705 G2 Desktop Mini BIOS was updated to the available N26 release.
+
+After reseating the DDR3 memory modules, the system correctly detected both RAM modules and approximately 7 GB of usable memory under Windows.
+
+Detailed investigation can be found in:
+docs/Troubleshooting.md
+
+
+### Phase 3 — Network Configuration
+
+# Phase 3 – Network Configuration
 
 ## Assign Static IP Address
 
-A static IP address was reserved through the home router to ensure the Home SOC server always receives the same IP address.
+A static IP address was reserved through the home router to ensure the Home SOC server maintains a consistent network address.
 
 This prevents monitoring agents from losing connectivity due to DHCP address changes.
 
-Current IP Address:
-
-```
+Current SOC Server IP:
 10.0.0.44
-```
 
----
 
-# Phase 3 – Git Version Control
+### Phase 4 — Git & Documentation
 
-Git was installed and configured to maintain version control for the project documentation.
 
-Repository structure includes:
+# Phase 4 – Git Version Control and Documentation
 
-```
+Git was configured to maintain version control for the Home SOC project.
+
+The project documentation is maintained in a GitHub repository.
+
+Current project structure includes:
 README.md
 docs/
 configs/
 scripts/
 diagrams/
-```
 
-The project is synchronized with GitHub to maintain version history throughout development.
 
----
+### Phase 5 — Wazuh Deployment
 
-# Phase 4 – Firmware Update
 
-During deployment, the server reported only approximately 3 GB of usable RAM despite having 8 GB installed.
+# Phase 5 – Wazuh SIEM Deployment
 
-The following actions were performed:
+## Wazuh Installation
 
-- Updated the HP BIOS to the latest available release
-- Verified memory detection under Linux
-- Verified memory detection under Windows
-- Reseated both DDR3 memory modules
+Wazuh was deployed on the Linux SOC server as the primary Security Information and Event Management (SIEM) platform.
 
-After reseating the RAM, the system correctly detected approximately 7 GB of usable memory.
+The Wazuh installation deployed the required server components, including:
 
-Detailed investigation can be found in:
+- Wazuh Manager
+- Wazuh Indexer
+- Wazuh Dashboard
+- Wazuh API
 
-```
-docs/Troubleshooting.md
-```
+Installed Wazuh version:
+4.14.7
 
----
+
+### Phase 6 — Windows Endpoint Integration
+
+# Phase 6 – Windows Endpoint Integration
+
+A Windows endpoint was enrolled into the Wazuh Manager.
+
+The endpoint was configured with:
+Agent Name: Windows-Main
+Wazuh Manager: 10.0.0.44
+Agent Group: default
+
+### Phase 7 — Sysmon Deployment
+
+# Phase 7 – Sysmon Deployment
+
+## Sysmon Installation
+
+Microsoft Sysmon was installed on the Windows endpoint to provide enhanced Windows security telemetry.
+
+Sysmon was configured using a dedicated XML configuration.
+
+The Sysmon service was verified as running:
+Service: Sysmon64
+Status: Running
+
+### Phase 8 — Docker Deployment
+
+# Phase 8 – Docker Deployment
+
+Docker was installed on the Linux SOC server to provide a platform for deploying additional security tooling.
+
+Docker installation was verified and configured so that the user can execute Docker commands without requiring `sudo`.
+
+Docker will be used to support additional components of the Home SOC environment without unnecessarily modifying the base operating system.
+
+
+# Current Lab Architecture
+
+The current environment consists of:
+
+                    ┌─────────────────────────┐
+                    │     Windows Endpoint    │
+                    │                         │
+                    │   Wazuh Agent           │
+                    │   Sysmon                │
+                    │   Windows Event Logs    │
+                    └────────────┬────────────┘
+                                 │
+                          Security Telemetry
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │     Home SOC Server     │
+                    │                         │
+                    │     Linux Mint          │
+                    │     Wazuh Manager       │
+                    │     Wazuh Indexer       │
+                    │     Wazuh Dashboard     │
+                    │     Wazuh API           │
+                    │     Docker              │
+                    └─────────────────────────┘
+
+### Current Status
 
 # Current Status
 
-Completed
+## Completed
 
 - Linux Mint installation
 - System updates
 - Static IP configuration
 - Git configuration
 - GitHub repository setup
-- BIOS update
-- RAM troubleshooting
+- BIOS firmware update
+- RAM troubleshooting and reseating
+- Wazuh Manager installation
+- Wazuh Indexer installation
+- Wazuh Dashboard installation
+- Wazuh API deployment
+- Wazuh Dashboard verification
+- Windows Wazuh Agent deployment
+- Windows endpoint enrollment
+- Windows Event Log collection
+- Sysmon installation
+- Sysmon configuration
+- Wazuh Sysmon event-channel configuration
+- Docker installation
 
-In Progress
+## In Progress
 
+- Sysmon event visibility in Wazuh
+- Validation of the complete endpoint telemetry pipeline
 - Home SOC documentation
 
-Upcoming
+## Upcoming
 
-- Wazuh Installation
-- Wazuh Dashboard
-- Wazuh Manager
-- Wazuh Indexer
-- Windows Agent
-- Sysmon
-- Suricata IDS
-- Attack Simulation
-- Detection Engineering
+- Sysmon event investigation
+- Suricata IDS deployment
+- Network security monitoring
+- Attack simulation
+- Detection engineering
+- MITRE ATT&CK mapping
+- Threat hunting
+- Incident investigation
+- Incident response documentation
+- Portfolio documentation
 
----
 
 # Project Roadmap
 
 | Phase | Status |
-|---------|--------|
+|-------|--------|
 | Base System Installation | ✅ Complete |
-| Infrastructure Configuration | ✅ Complete |
-| Documentation | 🔄 In Progress |
-| Wazuh Deployment | ⏳ Pending |
-| Endpoint Monitoring | ⏳ Pending |
+| Hardware Validation & Firmware | ✅ Complete |
+| Network Configuration | ✅ Complete |
+| Git & Documentation | ✅ Complete |
+| Wazuh Deployment | ✅ Complete |
+| Windows Endpoint Integration | ✅ Complete |
+| Sysmon Deployment | ✅ Complete |
+| Docker Deployment | ✅ Complete |
+| Telemetry Validation | 🔄 In Progress |
 | Network IDS | ⏳ Pending |
 | Attack Simulation | ⏳ Pending |
 | Detection Engineering | ⏳ Pending |
+| Threat Hunting & Investigation | ⏳ Pending |
+| Incident Response | ⏳ Pending |
 | Portfolio Completion | ⏳ Pending |
 
----
 
-# References
+# Lessons Learned
 
-- Linux Mint Documentation
-- Wazuh Documentation
-- Suricata Documentation
-- Git Documentation
-- HP EliteDesk 705 G2 Documentation
+This project is being documented as an iterative learning environment.
 
----
+Troubleshooting and lessons learned include:
+
+- Diagnosing abnormal RAM detection
+- Updating system firmware
+- Testing individual RAM modules and slots
+- Configuring a static network environment
+- Deploying a SIEM on limited hardware
+- Enrolling and troubleshooting Wazuh endpoints
+- Configuring Windows Event Log collection
+- Deploying Sysmon for enhanced endpoint telemetry
+- Managing Linux services
+- Using Docker for security tooling
+- Troubleshooting communication between SOC components
+
+Additional lessons will be documented as the project progresses.
 
 This document will continue to evolve as additional components are installed throughout the project.
