@@ -36,9 +36,8 @@ The goal is to gain hands-on experience with enterprise cybersecurity concepts i
 - [x] Configured Git repository
 - [x] Updated HP BIOS
 - [x] Diagnosed RAM detection issue
-- [x] Restored full 8 GB RAM by reseating memory
-- [x] Install Wazuh
-- [x] Install Suricata
+- [x] Troubleshoot RAM memory
+- [x] Deploy Wazuh
 - [x] Configure agents
 - [ ] Create attack simulations
 - [ ] Build dashboards
